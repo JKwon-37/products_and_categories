@@ -1,0 +1,19 @@
+@model Product
+
+<h1>@Model.Name</h1>
+
+<h3>Categories: </h3>
+
+<p>Categories Placeholder</p>
+<p>Categories Placeholder</p>
+<p>Categories Placeholder</p>
+<p>Categories Placeholder</p>
+<p>Categories Placeholder</p>
+
+<form asp-controller="Products" asp-action="AddCategory" asp-route-productId="@Model.ProductId">
+    <Select>
+        <option></option>
+        <option>Placeholder</option>
+        <option>Placeholder</option>
+    </Select>
+</form>

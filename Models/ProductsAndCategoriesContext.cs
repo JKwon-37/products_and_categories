@@ -8,5 +8,7 @@ public class ProductsAndCategoriesContext : DbContext
 
     // the "TableName" table name will come from the DbSet property name
     // add DbSet<> properties below
-    //public DbSet<Example> Examples { get; set; } 
+    public DbSet<Product> Products { get; set; } 
+    public DbSet<Category> Categories { get; set; } 
+    public DbSet<ProductCategoryAssociation> Associations { get; set; } 
 }

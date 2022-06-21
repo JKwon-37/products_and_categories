@@ -13,8 +13,10 @@ public class Product
     public string Description {get;set;}
 
     [Required(ErrorMessage = " must be required!")]
-    public decimal Price {get;set;}
+    public decimal? Price {get;set;}
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
+
+    public List<Product> Products = new List<Product>();
 }
