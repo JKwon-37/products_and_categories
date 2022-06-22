@@ -11,4 +11,6 @@ public class Category
 
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
+
+     public List<ProductCategoryAssociation> ManyProds {get;set;} = new List<ProductCategoryAssociation>();
 }

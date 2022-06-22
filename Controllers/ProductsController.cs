@@ -32,15 +32,31 @@ public class ProductsController : Controller
     }
 
     [HttpGet("products/{productId}")]
-    public IActionResult ViewProduct()
+    public IActionResult ViewProduct(int productId)
     {
+        Product? AProduct = _context.Products
+        .Include(prod => prod.ManyCats)
+        .ThenInclude(cat => cat.Category).FirstOrDefault(prod => prod.ProductId == productId);
 
-        return View("ViewProduct");
+        return View("ViewProduct", AProduct);
     }
 
-    [HttpGet("products/{productId}/delete")]
-    public IActionResult DeleteProduct()
+    [HttpPost("products/{productId}/add")]
+    public IActionResult AddCatToProd(int productId, ProductCategoryAssociation Id)
     {
-        
+        ProductCategoryAssociation? ExistingCatForProd = _context.Associations.FirstOrDefault(newCat => newCat.ProductId == productId);
+        List<Category> listCats = _context.Categories.ToList();
+        ViewBag.listCats = listCats;
+        if(ExistingCatForProd == null)
+        {
+            ProductCategoryAssociation AddCatToProd = new ProductCategoryAssociation()
+            {
+                ProductId = productId,
+                CategoryId = Id.CategoryId
+            };
+            _context.Associations.Add(AddCatToProd);
+            _context.SaveChanges();
+        }
+            return View("AddCatToProd");
     }
 }

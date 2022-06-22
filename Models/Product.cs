@@ -19,4 +19,7 @@ public class Product
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
 
     public List<Product> Products = new List<Product>();
+
+    public List<ProductCategoryAssociation> ManyCats {get;set;} = new List<ProductCategoryAssociation>();
+
 }
